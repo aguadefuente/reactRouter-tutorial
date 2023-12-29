@@ -13,6 +13,7 @@ const RootLayout = () => {
             {/*el NavLink tiene un Class attribute que al hacerle click se pone class="active"
              verlo en el inspector de google. Permite stylizarlo según ese attribute*/}
             <NavLink to="help">Help</NavLink>
+            <NavLink to="careers">Careers</NavLink>
           </nav>
         </header>
         <main>

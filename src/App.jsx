@@ -15,6 +15,11 @@ import {
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+///careers
+import Careers, { careersLoader } from "./pages/careers/Careers";
+import CareerDetails, {
+  careerDetailsLoader,
+} from "./pages/careers/CareerDetails";
 ////help
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
@@ -22,6 +27,8 @@ import Contact from "./pages/help/Contact";
 //layouts
 import RootLayout from "./layout/RootLayout";
 import HelpLayout from "./layout/HelpLayout";
+
+import CareersLayout from "./layout/CareersLayout";
 
 //MODO 2
 const router = createBrowserRouter(
@@ -38,6 +45,14 @@ const router = createBrowserRouter(
       <Route path="help" element={<HelpLayout />}>
         <Route path="faq" element={<Faq />} /> {/* /help/faq */}
         <Route path="contact" element={<Contact />} /> {/* /help/contact */}
+      </Route>
+      <Route path="careers" element={<CareersLayout />}>
+        <Route index element={<Careers />} loader={careersLoader} />
+        <Route
+          path=":id"
+          element={<CareerDetails />}
+          loader={careerDetailsLoader}
+        />
       </Route>
       <Route path="*" element={<NotFound />} /> {/*Error page */}
     </Route>
