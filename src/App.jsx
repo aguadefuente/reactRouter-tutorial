@@ -16,10 +16,11 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 ///careers
-import Careers, { careersLoader } from "./pages/careers/Careers";
+import Careers, { careersLoader } from "./pages/careers/Careers"; //acá importamos el Loader
 import CareerDetails, {
   careerDetailsLoader,
 } from "./pages/careers/CareerDetails";
+import CareersError from "./pages/careers/CareersError";
 ////help
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
@@ -27,7 +28,6 @@ import Contact from "./pages/help/Contact";
 //layouts
 import RootLayout from "./layout/RootLayout";
 import HelpLayout from "./layout/HelpLayout";
-
 import CareersLayout from "./layout/CareersLayout";
 
 //MODO 2
@@ -46,15 +46,21 @@ const router = createBrowserRouter(
         <Route path="faq" element={<Faq />} /> {/* /help/faq */}
         <Route path="contact" element={<Contact />} /> {/* /help/contact */}
       </Route>
-      <Route path="careers" element={<CareersLayout />}>
-        <Route index element={<Careers />} loader={careersLoader} />
+      <Route
+        path="careers"
+        element={<CareersLayout />}
+        errorElement={<CareersError />}
+      >
+        <Route index element={<Careers />} loader={careersLoader} />{" "}
+        {/*acá usamos el Loader para que ejecute la función carrersLoader */}
         <Route
-          path=":id"
+          path=":id" /*route parameter ej: http://127.0.0.1:5173/careers/2*/
           element={<CareerDetails />}
           loader={careerDetailsLoader}
         />
       </Route>
-      <Route path="*" element={<NotFound />} /> {/*Error page */}
+      {/*Error page */}
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

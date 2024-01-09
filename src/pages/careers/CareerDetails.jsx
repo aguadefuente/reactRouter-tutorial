@@ -6,6 +6,7 @@ export default function CareerDetails() {
 
   return (
     <div className="career-details">
+      {console.log("the param is", id)}
       <h2>Career Details for {career.title}</h2>
       <p>Starting salary: {career.salary}</p>
       <p>Location: {career.location}</p>
@@ -19,11 +20,15 @@ export default function CareerDetails() {
   );
 }
 
-// data loader
+// data loader usando el useParam hook
 export const careerDetailsLoader = async ({ params }) => {
   const { id } = params;
 
   const res = await fetch("http://localhost:4000/careers/" + id);
+
+  if (!res.ok) {
+    throw Error("Could not find that career");
+  }
 
   return res.json();
 };
