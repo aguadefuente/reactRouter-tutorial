@@ -23,7 +23,7 @@ import CareerDetails, {
 import CareersError from "./pages/careers/CareersError";
 ////help
 import Faq from "./pages/help/Faq";
-import Contact from "./pages/help/Contact";
+import Contact, { contactAction } from "./pages/help/Contact";
 
 //layouts
 import RootLayout from "./layout/RootLayout";
@@ -44,7 +44,12 @@ const router = createBrowserRouter(
       {/*Nesting */}
       <Route path="help" element={<HelpLayout />}>
         <Route path="faq" element={<Faq />} /> {/* /help/faq */}
-        <Route path="contact" element={<Contact />} /> {/* /help/contact */}
+        <Route
+          path="contact"
+          element={<Contact />}
+          action={contactAction}
+        />{" "}
+        {/* /help/contact */}
       </Route>
       <Route
         path="careers"
