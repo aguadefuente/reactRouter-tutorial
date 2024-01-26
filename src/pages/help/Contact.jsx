@@ -1,4 +1,6 @@
 import { Form, redirect, useActionData } from "react-router-dom";
+//estos componentes nos facilita traer la data del formulario sin tener que usar useState() y su eventHandler function
+//<Form> component no guarda la data en un request object y la pasa a una action function
 
 export default function Contact() {
   const data = useActionData();
@@ -7,6 +9,9 @@ export default function Contact() {
     <div className="contact">
       <h3>Contact Us</h3>
       <Form method="post" action="/help/contact">
+        {/*method property post queda en frontEnd para acceder a la data. No es un post request al server en sí mismo 
+        action property busca el route que ponemos y ejecutará la action función asociada 
+        cuando el formulario sea submited - ver App.jsx <Route path="help"...<Route path="contact"...action={contactAction}>>*/}
         <label>
           <span>Your email:</span>
           <input type="email" name="email" required />
@@ -22,6 +27,7 @@ export default function Contact() {
   );
 }
 
+//action function
 export const contactAction = async ({ request }) => {
   console.log("request", request);
 

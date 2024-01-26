@@ -47,7 +47,7 @@ const router = createBrowserRouter(
         <Route
           path="contact"
           element={<Contact />}
-          action={contactAction}
+          action={contactAction} //aquí la action function del Form component
         />{" "}
         {/* /help/contact */}
       </Route>
@@ -55,6 +55,11 @@ const router = createBrowserRouter(
         path="careers"
         element={<CareersLayout />}
         errorElement={<CareersError />}
+        /*acá asociamos el componente CareersError con los componentes
+        CareerDetails y Career para que aparezca el error message 
+        si existe error al fetch data 
+        Colocamos el errorElement en el componente padre CareersLayout así si sucede
+        algún error en sus hijos será llamdo el componente CareersError (bubbleup)*/
       >
         <Route index element={<Careers />} loader={careersLoader} />{" "}
         {/*acá usamos el Loader para que ejecute la función carrersLoader */}
@@ -69,6 +74,7 @@ const router = createBrowserRouter(
     </Route>
   )
 );
+
 function App() {
   return <RouterProvider router={router} />;
 }

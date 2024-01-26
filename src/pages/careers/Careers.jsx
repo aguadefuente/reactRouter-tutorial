@@ -10,6 +10,8 @@ export default function Careers() {
     <div className="careers">
       {careers.map((career) => (
         <Link to={career.id.toString()} key={career.id}>
+          {" "}
+          {/*id param - ver App.jsx y CarrerDetails.jsx */}
           <p>{career.title}</p>
           <p>Based in {career.location}</p>
         </Link>
@@ -31,5 +33,4 @@ export const careersLoader = async () => {
 
 //importamos el loader a App.jsx y llamamos a la función en el <Route> donde queremos usarla
 //asi react-router resuelve la promise
-//y podremos acceder a la data y usarla en el componente
-//CareerDetails() que creamos aquí
+//y podremos acceder a la data y usarla en el componente Careers() creado en este file
