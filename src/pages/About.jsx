@@ -7,7 +7,8 @@ export default function About() {
 
   if (!user) {
     return <Navigate to="/" replace={true} />;
-  }
+  } //replace={true} attribute hace que la history de mi navegación sea reemplazada con lo que ponemos en el to attribute
+  //ejemplo: aprieto el link about, luego el logout que me redirige a home, si aprieto las flechitas de mi navegador para ir a la página anterior no va a ir a about page sino que será reeplazada por la home page
 
   return (
     <div className="about">
